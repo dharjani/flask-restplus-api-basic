@@ -1,7 +1,7 @@
 from email import message
 from http.client import BAD_REQUEST
 import uuid
-from django.apps import apps
+#from django.apps import apps
 from flask import Flask, request
 from flask_restplus import Api, Resource, fields
 from app_service import AppService
