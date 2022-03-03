@@ -39,7 +39,7 @@ jobs:
         python tests.py
     - name: Validate Template
       run: |
-        packer validate firstami.json
+        packer validate packer.json
     - name: Build Artifact
       run: |
-        packer build firstami.json
+        packer build packer.json
