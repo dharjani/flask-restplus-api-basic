@@ -37,3 +37,9 @@ jobs:
     - name: Run Tests
       run: |
         python tests.py
+    - name: Validate Template
+      run: |
+        packer validate firstami.json
+    - name: Build Artifact
+      run: |
+        packer build firstami.json

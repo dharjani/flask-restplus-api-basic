@@ -1,0 +1,68 @@
+{
+    "variables" : {
+        "region" : "us-east-1",
+        "aws_access_key_id": "AKIA3TDBZHDTKEMH2QPA",
+        "aws_secret_access_key": "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",
+        "source_ami" : "ami-033b95fb8079dc481" 
+    },
+    "builders" : [
+        {
+            "type" : "amazon-ebs",
+            "profile" : "default",
+            "region" : "us-east-1",
+            "access_key": "AKIA3TDBZHDTKEMH2QPA",
+            "secret_key": "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",
+            "instance_type" : "t2.micro",
+            "source_ami" : "ami-033b95fb8079dc481",
+            "ssh_username" : "ec2-user",
+            "ami_name" : "custom-ami_{{timestamp}}",
+            "ami_description" : "Amazon Machine Image",
+			"ami_users": ["608675075509","382888791025"],
+            "run_tags" : {
+                "Name" : "packer-builder"
+            },
+            "ami_block_device_mappings": [
+              {
+                "delete_on_termination": true,
+                "device_name": "/dev/sda1",
+                "volume_size": 60,
+                "volume_type": "gp2"
+              }
+            ],
+            "tags" : {
+                "Tool" : "Packer",
+                "Author" : "user",
+                "Environment" : "dev"
+            }
+        }
+    ],
+    "provisioners" : [
+        {
+            "type": "shell",
+            "inline": ["sleep 30",
+            "sudo su",
+            "sudo yum update -y",
+            "amazon-linux-extras install epel -y",
+            "yum install nginx -y",
+            "yum install git -y",
+            "yum install gcc -y",
+            "yum install build-essential -y",
+            "yum install python3-pip python3-devel python3-setuptools -y",
+            "amazon-linux-extras install postgresql11 -y",
+            "yum install postgresql-server -y",
+			"echo 'here'",
+            "mkdir webapp-target",
+            "cd webapp-target",
+            "git clone https://github.com/dharjani/flask-restplus-api-basic.git webapp-target",
+			". venv/bin/activate",
+            "python3 -m pip install --upgrade pip",
+            "pip install flask",
+            "pip install flask-restplus",
+            "pip install -r requirements.txt",
+            "FLASK_APP=app.py",
+            "FLASK_ENV=development",
+            "flask run"
+			]
+        }
+    ]
+}
