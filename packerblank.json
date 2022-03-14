@@ -44,10 +44,12 @@
             "sudo yum install git -y",
             "sudo yum install python3-pip python3-devel python3-setuptools -y",
             "sudo yum install gcc -y",
+            "pip install python-dotenv",
             "pip3 install wheel",
             "pip3 install flask",
             "pip3 install flask-restplus",
-            "pip3 install gunicorn"
+            "pip3 install gunicorn",
+            "pip3 install boto"
 
 			]
         }
