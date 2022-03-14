@@ -15,6 +15,7 @@ from config import S3_BUCKET, S3_KEY, S3_SECRET, API_LOGGEDINUSERID
 import boto3
 from werkzeug.datastructures import FileStorage
 from werkzeug.utils import secure_filename
+from werkzeug.utils import cached_property
 
 class Error(Exception):
     pass
