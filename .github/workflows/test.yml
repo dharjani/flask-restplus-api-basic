@@ -41,7 +41,7 @@ jobs:
         pip3 install gunicorn
         pip3 install boto
     - name: Run Tests
-      with:
+      uses:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         FLASK_APP: app.py
