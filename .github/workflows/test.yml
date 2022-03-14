@@ -57,9 +57,9 @@ jobs:
         pip3 install flask-restplus
         pip3 install gunicorn
         pip3 install boto
-    - name: Run Tests
-      run: |
-        python tests.py
+    #- name: Run Tests
+    #  run: |
+    #    python tests.py
     - name: Validate Template
       run: |
         packer validate packerblank.json
