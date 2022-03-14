@@ -34,6 +34,12 @@ jobs:
         pip install flask
         pip install flask-restplus
         pip install -r requirements.txt
+        pip install python-dotenv
+        pip3 install wheel
+        pip3 install flask
+        pip3 install flask-restplus
+        pip3 install gunicorn
+        pip3 install boto
     - name: Run Tests
       run: |
         python tests.py
