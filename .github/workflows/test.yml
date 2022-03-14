@@ -41,6 +41,24 @@ jobs:
         pip3 install gunicorn
         pip3 install boto
     - name: Run Tests
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        FLASK_APP: app.py
+        FLASK_DEBUG: 1
+        FLASK_ENV: development
+        S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        S3_KEY: ${{ secrets.S3_KEY }}
+        S3_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+        S3_PREFIXURL: ${{ secrets.S3_PREFIXURL }}
+        AWS_KEY: ${{ secrets.AWS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        RDS_USERNAME: ${{ secrets.RDS_USERNAME }}
+        RDS_PWD: ${{ secrets.RDS_PWD }}
+        RDS_DB: ${{ secrets.RDS_DB }}
+        RDS_HOST: ${{ secrets.RDS_HOST }}
+        API_LOGGEDINUSERID: ${{ secrets.API_LOGGEDINUSERID }}
+        GITHUB_REPO_PATH: ${{ secrets.GITHUB_REPO_PATH }}
       run: |
         python tests.py
     - name: Validate Template
