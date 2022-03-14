@@ -5,9 +5,9 @@ After=network.target
 [Service]
 User=dharjani
 Group=www-data
-WorkingDirectory=/Users/dharjani/flask-restplus-api-basic
-Environment="PATH=/Users/dharjani/flask-restplus-api-basic/venv/bin"
-ExecStart=/Users/dharjani/flask-restplus-api-basic/venv/bin/gunicorn --bind 0.0.0.0:4999 --workers 4 app:flask_app --log-level debug
+WorkingDirectory=/home/ec2-user/webapp/flask-restplus-api-basic/
+Environment="PATH=/home/ec2-user/webapp/flask-restplus-api-basic/venv/bin"
+ExecStart=/home/ec2-user/webapp/flask-restplus-api-basic/venv/bin/gunicorn --bind 0.0.0.0:8080 --workers 4 app:flask_app --log-level debug
 
 [Install]
 WantedBy=multi-user.target
